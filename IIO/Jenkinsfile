@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout your source code from a version control system (e.g., Git)
+                checkout scm
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                // Build your Maven project
+                sh 'mvn clean install'
+            }
+        }
+        
+        stage('Run Tests') {
+            steps {
+                // Run your Selenium tests
+                sh 'mvn test'
+            }
+        }
+    }
+}
